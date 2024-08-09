@@ -84,6 +84,10 @@ impl Fits {
     }
     Some(self.hdus.remove(index))
   }
+
+  pub fn get_hdus(&self)->&[HeaderDataUnit] {
+    &self.hdus
+  }
 }
 
 impl BlockSized for Fits {
