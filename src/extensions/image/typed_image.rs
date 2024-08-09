@@ -109,8 +109,16 @@ impl ExtensionPrint for TypedImage {
 
 impl Display for TypedImage {
   fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-    //TODO: make pretty display for image!
-    todo!()
+    write!(f,"TypedImage(")?;
+    match self {
+      Self::ByteImg(img) => write!(f,"u16,{}",img)?,
+      Self::I16Img(img)=> write!(f,"i16,{}",img)?,
+      Self::I32Img(img)=> write!(f,"i32,{}",img)?,
+      Self::I64Img(img)=> write!(f,"i64,{}",img)?,
+      Self::SpfImg(img)=> write!(f,"f32,{}",img)?,
+      Self::DpfImg(img)=> write!(f,"f64,{}",img)?,
+    }
+    write!(f,")")
   }
 }
 
